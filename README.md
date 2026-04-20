@@ -52,8 +52,8 @@ A professional-grade Flutter application built as a takeaway assignment for Givv
 The app uses local mock data to simulate a real-world API response, including pagination metadata and an 800ms simulated network delay.
 
 ## Screenshots
-![alt text](Screenshot_20260421_011029.jpg)
+![](Screenshot_20260421_011029.jpg)
 
-![alt text](Screenshot_20260421_011019.jpg)
+![](Screenshot_20260421_011019.jpg)
 
-![alt text](Screenshot_20260421_011007.jpg)
+![](Screenshot_20260421_011007.jpg)
