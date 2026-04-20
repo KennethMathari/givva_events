@@ -127,10 +127,13 @@ class _EventsScreenState extends State<EventsScreen> {
           );
         }
 
-        return Column(
-          children: [
-            Expanded(
-              child: RefreshIndicator(
+        return SafeArea(
+          bottom: true,
+          top: false,
+          child: Column(
+            children: [
+              Expanded(
+                child: RefreshIndicator(
                   onRefresh: () async {
                     context.read<FundraiserBloc>().add(FetchFundraisers(tab: tab, page: 0));
                   },
@@ -165,6 +168,7 @@ class _EventsScreenState extends State<EventsScreen> {
                 ),
             ],
           ),
+        );
         );
       },
     );
