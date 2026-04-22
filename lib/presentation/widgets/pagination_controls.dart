@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:givva_events/data/models/fundraiser.dart';
 
+/// A widget that provides pagination controls (Previous, Page Numbers, Next).
 class PaginationControls extends StatelessWidget {
-  final Pagination pagination;
-  final Function(int) onPageChanged;
-
+  /// Creates a [PaginationControls].
   const PaginationControls({
-    super.key,
     required this.pagination,
     required this.onPageChanged,
+    super.key,
   });
+
+  /// The pagination metadata.
+  final Pagination pagination;
+  /// Callback for when a page is changed.
+  final Function(int) onPageChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +59,12 @@ class PaginationControls extends StatelessWidget {
       onPressed: isEnabled ? onPressed : null,
       style: TextButton.styleFrom(
         foregroundColor: Colors.grey[700],
-        backgroundColor: Colors.white.withOpacity(0.8),
+        backgroundColor: Colors.white.withValues(alpha: 0.8),
         disabledForegroundColor: Colors.grey[400],
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
-          side: BorderSide(color: Colors.grey.withOpacity(0.2)),
+          side: BorderSide(color: Colors.grey.withValues(alpha: 0.2)),
         ),
       ),
       child: Text(
@@ -82,9 +86,9 @@ class PaginationControls extends StatelessWidget {
         height: 32,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isActive ? Colors.teal : Colors.white.withOpacity(0.8),
+          color: isActive ? Colors.teal : Colors.white.withValues(alpha: 0.8),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.grey.withOpacity(0.2)),
+          border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
         ),
         child: Text(
           '$pageNumber',

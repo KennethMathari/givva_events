@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:givva_events/data/models/fundraiser.dart';
 
+/// A chip widget that displays the status of a fundraiser (Active, Closed, Archived).
 class StatusChip extends StatelessWidget {
-  final Fundraiser fundraiser;
+  /// Creates a [StatusChip].
+  const StatusChip({
+    required this.fundraiser,
+    super.key,
+  });
 
-  const StatusChip({super.key, required this.fundraiser});
+  /// The fundraiser whose status is displayed.
+  final Fundraiser fundraiser;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +31,7 @@ class StatusChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(4),
         border: Border.all(color: color, width: 0.5),
       ),
