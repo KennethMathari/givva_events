@@ -1,30 +1,34 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:givva_events/logic/bloc/fundraiser_bloc.dart';
+import 'package:givva_events/presentation/screens/events_screen.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'package:givva_events/main.dart';
+class MockFundraiserBloc extends MockBloc<FundraiserEvent, FundraiserState>
+    implements FundraiserBloc {}
 
 void main() {
-  testWidgets('Counter increments smoke test', (tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  late MockFundraiserBloc mockBloc;
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  setUp(() {
+    mockBloc = MockFundraiserBloc();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Mock initial state
+    when(() => mockBloc.state).thenReturn(FundraiserState.initial());
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  testWidgets('EventsScreen renders title', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: BlocProvider<FundraiserBloc>.value(
+          value: mockBloc,
+          child: const EventsScreen(),
+        ),
+      ),
+    );
+
+    expect(find.text('Fund Collection Events'), findsOneWidget);
   });
 }
