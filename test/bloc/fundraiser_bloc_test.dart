@@ -46,14 +46,17 @@ void main() {
     blocTest<FundraiserBloc, FundraiserState>(
       'emits [loading, success] when FetchFundraisers is added',
       build: () {
-        when(() => repository.fetchFundraisers(tab: 'community', page: 0))
-            .thenAnswer((_) async => {
-                  'status': 200,
-                  'result': {
-                    'data': [mockFundraiser],
-                    'pagination': mockPagination,
-                  }
-                });
+        when(
+          () => repository.fetchFundraisers(tab: 'community', page: 0),
+        ).thenAnswer(
+          (_) async => {
+            'status': 200,
+            'result': {
+              'data': [mockFundraiser],
+              'pagination': mockPagination,
+            },
+          },
+        );
         return bloc;
       },
       act: (bloc) => bloc.add(FetchFundraisers(tab: 'community', page: 0)),
@@ -68,23 +71,36 @@ void main() {
         isA<FundraiserState>()
             .having((s) => s.isLoading['community'], 'isLoading', false)
             .having((s) => s.data['community'], 'data', [mockFundraiser])
-            .having((s) => s.pagination['community'], 'pagination', mockPagination),
+            .having(
+              (s) => s.pagination['community'],
+              'pagination',
+              mockPagination,
+            ),
       ],
     );
 
     blocTest<FundraiserBloc, FundraiserState>(
       'emits [loading, error] when repository throws exception',
       build: () {
-        when(() => repository.fetchFundraisers(tab: 'community', page: 0))
-            .thenThrow(Exception('Failed to fetch'));
+        when(
+          () => repository.fetchFundraisers(tab: 'community', page: 0),
+        ).thenThrow(Exception('Failed to fetch'));
         return bloc;
       },
       act: (bloc) => bloc.add(FetchFundraisers(tab: 'community', page: 0)),
       expect: () => [
-        isA<FundraiserState>().having((s) => s.isLoading['community'], 'isLoading', true),
+        isA<FundraiserState>().having(
+          (s) => s.isLoading['community'],
+          'isLoading',
+          true,
+        ),
         isA<FundraiserState>()
             .having((s) => s.isLoading['community'], 'isLoading', false)
-            .having((s) => s.errors['community'], 'error', contains('Exception: Failed to fetch')),
+            .having(
+              (s) => s.errors['community'],
+              'error',
+              contains('Exception: Failed to fetch'),
+            ),
       ],
     );
   });

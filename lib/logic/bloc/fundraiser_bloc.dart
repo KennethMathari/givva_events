@@ -16,6 +16,7 @@ class FetchFundraisers extends FundraiserEvent {
 
   /// The tab to fetch fundraisers for.
   final String tab;
+
   /// The page number to fetch.
   final int page;
 
@@ -45,10 +46,13 @@ class FundraiserState extends Equatable {
 
   /// Data for each tab.
   final Map<String, List<Fundraiser>> data;
+
   /// Pagination info for each tab.
   final Map<String, Pagination?> pagination;
+
   /// Loading status for each tab.
   final Map<String, bool> isLoading;
+
   /// Errors for each tab.
   final Map<String, String?> errors;
 
@@ -74,7 +78,8 @@ class FundraiserState extends Equatable {
 /// BLoC for managing fundraiser data.
 class FundraiserBloc extends Bloc<FundraiserEvent, FundraiserState> {
   /// Creates a [FundraiserBloc].
-  FundraiserBloc({required this.repository}) : super(FundraiserState.initial()) {
+  FundraiserBloc({required this.repository})
+    : super(FundraiserState.initial()) {
     on<FetchFundraisers>(_onFetchFundraisers);
   }
 
@@ -86,35 +91,46 @@ class FundraiserBloc extends Bloc<FundraiserEvent, FundraiserState> {
     Emitter<FundraiserState> emit,
   ) async {
     final tab = event.tab;
-    
+
     // Set loading for specific tab
     final newLoading = Map<String, bool>.from(state.isLoading)..[tab] = true;
     final newErrors = Map<String, String?>.from(state.errors)..[tab] = null;
     emit(state.copyWith(isLoading: newLoading, errors: newErrors));
 
     try {
-      final response = await repository.fetchFundraisers(tab: tab, page: event.page);
-      
+      final response = await repository.fetchFundraisers(
+        tab: tab,
+        page: event.page,
+      );
+
       if (response['status'] == 200) {
         final result = response['result'] as Map<String, dynamic>;
         final newData = result['data'] as List<Fundraiser>;
         final newPaging = result['pagination'] as Pagination;
 
-        final updatedData = Map<String, List<Fundraiser>>.from(state.data)..[tab] = newData;
-        final updatedPagination = Map<String, Pagination?>.from(state.pagination)..[tab] = newPaging;
-        final updatedLoading = Map<String, bool>.from(state.isLoading)..[tab] = false;
+        final updatedData = Map<String, List<Fundraiser>>.from(state.data)
+          ..[tab] = newData;
+        final updatedPagination = Map<String, Pagination?>.from(
+          state.pagination,
+        )..[tab] = newPaging;
+        final updatedLoading = Map<String, bool>.from(state.isLoading)
+          ..[tab] = false;
 
-        emit(state.copyWith(
-          data: updatedData,
-          pagination: updatedPagination,
-          isLoading: updatedLoading,
-        ));
+        emit(
+          state.copyWith(
+            data: updatedData,
+            pagination: updatedPagination,
+            isLoading: updatedLoading,
+          ),
+        );
       } else {
         throw Exception(response['message'] ?? 'Failed to fetch fundraisers');
       }
     } catch (e) {
-      final updatedLoading = Map<String, bool>.from(state.isLoading)..[tab] = false;
-      final updatedErrors = Map<String, String?>.from(state.errors)..[tab] = e.toString();
+      final updatedLoading = Map<String, bool>.from(state.isLoading)
+        ..[tab] = false;
+      final updatedErrors = Map<String, String?>.from(state.errors)
+        ..[tab] = e.toString();
       emit(state.copyWith(isLoading: updatedLoading, errors: updatedErrors));
     }
   }

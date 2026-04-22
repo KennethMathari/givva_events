@@ -12,6 +12,7 @@ class PaginationControls extends StatelessWidget {
 
   /// The pagination metadata.
   final Pagination pagination;
+
   /// Callback for when a page is changed.
   final Function(int) onPageChanged;
 

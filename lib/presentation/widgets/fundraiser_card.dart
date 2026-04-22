@@ -46,7 +46,10 @@ class FundraiserCard extends StatelessWidget {
                 width: 60,
                 height: 60,
                 color: Colors.grey[200],
-                child: const Icon(Icons.image_not_supported, color: Colors.grey),
+                child: const Icon(
+                  Icons.image_not_supported,
+                  color: Colors.grey,
+                ),
               ),
             ),
           ),

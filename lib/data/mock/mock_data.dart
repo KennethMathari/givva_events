@@ -6,7 +6,8 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
     'name': 'Test Fund Destinations',
     'identifier': 'C119',
     'shortDescription': 'Funding for community destinations',
-    'images': 'https://stage.images.givva.world/c93fa738-18fc-429c-b4d1-5ccf6399168d.png',
+    'images':
+        'https://stage.images.givva.world/c93fa738-18fc-429c-b4d1-5ccf6399168d.png',
     'targetAmount': 100.0,
     'deadline': '2026-02-28 00:00:00',
     'createdAt': '2026-01-29 14:47:26',
@@ -14,7 +15,7 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': '47cc60fe-c5ca-462f-8771-13bb58a92279',
@@ -22,7 +23,8 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
     'name': 'Test Commissions 2',
     'identifier': 'C114',
     'shortDescription': 'Second commissions test',
-    'images': 'https://stage.images.givva.world/15a99a65-c98e-4ce6-9f4a-a47135e7d3b8.png',
+    'images':
+        'https://stage.images.givva.world/15a99a65-c98e-4ce6-9f4a-a47135e7d3b8.png',
     'targetAmount': 100000.0,
     'deadline': '2026-04-30 00:00:00',
     'createdAt': '2026-01-05 14:36:25',
@@ -30,7 +32,7 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'ada27580-1a47-4a85-9e0f-b03709921aa6',
@@ -38,7 +40,8 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
     'name': 'Test Commissions',
     'identifier': 'C112',
     'shortDescription': 'First commissions test',
-    'images': 'https://stage.images.givva.world/35e967bb-f42b-4467-bea3-8a0d28adb7d2.png',
+    'images':
+        'https://stage.images.givva.world/35e967bb-f42b-4467-bea3-8a0d28adb7d2.png',
     'targetAmount': 10000.0,
     'deadline': '2025-12-31 00:00:00',
     'createdAt': '2025-12-22 09:50:40',
@@ -46,7 +49,7 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'b1c2d3e4-0001-0001-0001-000000000001',
@@ -62,7 +65,7 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'b1c2d3e4-0001-0001-0001-000000000002',
@@ -78,13 +81,17 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
 ];
 
 const Map<String, dynamic> mockCommunityPaginationPage1 = {
-  'page': 0, 'size': 5, 'totalCount': 8,
-  'totalPages': 2, 'hasNext': true, 'hasPrevious': false,
+  'page': 0,
+  'size': 5,
+  'totalCount': 8,
+  'totalPages': 2,
+  'hasNext': true,
+  'hasPrevious': false,
 };
 
 // COMMUNITY — PAGE 2
@@ -95,7 +102,8 @@ const List<Map<String, dynamic>> mockCommunityPage2 = [
     'name': 'Long Term Test',
     'identifier': 'C115',
     'shortDescription': 'Long term investment fund',
-    'images': 'https://stage.images.givva.world/91cba47b-8cdf-4664-8ea2-a7d7d0299714.png',
+    'images':
+        'https://stage.images.givva.world/91cba47b-8cdf-4664-8ea2-a7d7d0299714.png',
     'targetAmount': 100000.0,
     'deadline': '2026-04-30 00:00:00',
     'createdAt': '2026-01-19 14:38:57',
@@ -103,7 +111,7 @@ const List<Map<String, dynamic>> mockCommunityPage2 = [
     'archivedAt': null,
     'keyword': 'LONG_TERM',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'b1c2d3e4-0001-0001-0001-000000000004',
@@ -119,7 +127,7 @@ const List<Map<String, dynamic>> mockCommunityPage2 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'b1c2d3e4-0001-0001-0001-000000000005',
@@ -135,13 +143,17 @@ const List<Map<String, dynamic>> mockCommunityPage2 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
 ];
 
 const Map<String, dynamic> mockCommunityPaginationPage2 = {
-  'page': 1, 'size': 5, 'totalCount': 8,
-  'totalPages': 2, 'hasNext': false, 'hasPrevious': true,
+  'page': 1,
+  'size': 5,
+  'totalCount': 8,
+  'totalPages': 2,
+  'hasNext': false,
+  'hasPrevious': true,
 };
 
 // SUBGROUP — PAGE 1
@@ -160,7 +172,7 @@ const List<Map<String, dynamic>> mockSubgroupPage1 = [
     'archivedAt': null,
     'keyword': 'SEF',
     'groupId': 'grp-001',
-    'groupName': 'Seminarians Group'
+    'groupName': 'Seminarians Group',
   },
   {
     'id': 'b2c3d4e5-0002-0002-0002-000000000001',
@@ -176,7 +188,7 @@ const List<Map<String, dynamic>> mockSubgroupPage1 = [
     'archivedAt': null,
     'keyword': 'SUBGROUP_PROJECTS',
     'groupId': 'grp-002',
-    'groupName': "Women's Group"
+    'groupName': "Women's Group",
   },
   {
     'id': 'b2c3d4e5-0002-0002-0002-000000000002',
@@ -192,7 +204,7 @@ const List<Map<String, dynamic>> mockSubgroupPage1 = [
     'archivedAt': null,
     'keyword': 'SUBGROUP_PROJECTS',
     'groupId': 'grp-003',
-    'groupName': 'Youth Group'
+    'groupName': 'Youth Group',
   },
   {
     'id': 'b2c3d4e5-0002-0002-0002-000000000003',
@@ -208,7 +220,7 @@ const List<Map<String, dynamic>> mockSubgroupPage1 = [
     'archivedAt': null,
     'keyword': 'SUBGROUP_PROJECTS',
     'groupId': 'grp-004',
-    'groupName': 'Choir Group'
+    'groupName': 'Choir Group',
   },
   {
     'id': 'b2c3d4e5-0002-0002-0002-000000000004',
@@ -224,13 +236,17 @@ const List<Map<String, dynamic>> mockSubgroupPage1 = [
     'archivedAt': null,
     'keyword': 'SUBGROUP_PROJECTS',
     'groupId': 'grp-005',
-    'groupName': 'Farmers Group'
+    'groupName': 'Farmers Group',
   },
 ];
 
 const Map<String, dynamic> mockSubgroupPaginationPage1 = {
-  'page': 0, 'size': 5, 'totalCount': 6,
-  'totalPages': 2, 'hasNext': true, 'hasPrevious': false,
+  'page': 0,
+  'size': 5,
+  'totalCount': 6,
+  'totalPages': 2,
+  'hasNext': true,
+  'hasPrevious': false,
 };
 
 // SUBGROUP — PAGE 2
@@ -249,13 +265,17 @@ const List<Map<String, dynamic>> mockSubgroupPage2 = [
     'archivedAt': null,
     'keyword': 'SUBGROUP_PROJECTS',
     'groupId': 'grp-006',
-    'groupName': 'Tech Group'
+    'groupName': 'Tech Group',
   },
 ];
 
 const Map<String, dynamic> mockSubgroupPaginationPage2 = {
-  'page': 1, 'size': 5, 'totalCount': 6,
-  'totalPages': 2, 'hasNext': false, 'hasPrevious': true,
+  'page': 1,
+  'size': 5,
+  'totalCount': 6,
+  'totalPages': 2,
+  'hasNext': false,
+  'hasPrevious': true,
 };
 
 // ARCHIVED — PAGE 1
@@ -274,7 +294,7 @@ const List<Map<String, dynamic>> mockArchivedPage1 = [
     'archivedAt': '2025-07-01 00:00:00',
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'c3d4e5f6-0003-0003-0003-000000000002',
@@ -290,7 +310,7 @@ const List<Map<String, dynamic>> mockArchivedPage1 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'c3d4e5f6-0003-0003-0003-000000000003',
@@ -306,7 +326,7 @@ const List<Map<String, dynamic>> mockArchivedPage1 = [
     'archivedAt': '2025-01-01 00:00:00',
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'c3d4e5f6-0003-0003-0003-000000000004',
@@ -322,7 +342,7 @@ const List<Map<String, dynamic>> mockArchivedPage1 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'c3d4e5f6-0003-0003-0003-000000000005',
@@ -338,13 +358,17 @@ const List<Map<String, dynamic>> mockArchivedPage1 = [
     'archivedAt': '2024-10-01 00:00:00',
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
 ];
 
 const Map<String, dynamic> mockArchivedPaginationPage1 = {
-  'page': 0, 'size': 5, 'totalCount': 7,
-  'totalPages': 2, 'hasNext': true, 'hasPrevious': false,
+  'page': 0,
+  'size': 5,
+  'totalCount': 7,
+  'totalPages': 2,
+  'hasNext': true,
+  'hasPrevious': false,
 };
 
 // ARCHIVED — PAGE 2
@@ -363,7 +387,7 @@ const List<Map<String, dynamic>> mockArchivedPage2 = [
     'archivedAt': '2024-09-01 00:00:00',
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
   {
     'id': 'c3d4e5f6-0003-0003-0003-000000000007',
@@ -379,11 +403,15 @@ const List<Map<String, dynamic>> mockArchivedPage2 = [
     'archivedAt': null,
     'keyword': 'COMMUNITY_PROJECTS',
     'groupId': null,
-    'groupName': null
+    'groupName': null,
   },
 ];
 
 const Map<String, dynamic> mockArchivedPaginationPage2 = {
-  'page': 1, 'size': 5, 'totalCount': 7,
-  'totalPages': 2, 'hasNext': false, 'hasPrevious': true,
+  'page': 1,
+  'size': 5,
+  'totalCount': 7,
+  'totalPages': 2,
+  'hasNext': false,
+  'hasPrevious': true,
 };

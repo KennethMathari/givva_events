@@ -6,10 +6,10 @@ import 'package:givva_events/presentation/screens/events_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize dependency injection
   setupLocator();
-  
+
   runApp(const MyApp());
 }
 
