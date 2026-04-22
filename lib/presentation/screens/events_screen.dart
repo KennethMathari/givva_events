@@ -4,7 +4,9 @@ import 'package:givva_events/logic/bloc/fundraiser_bloc.dart';
 import 'package:givva_events/presentation/widgets/fundraiser_card.dart';
 import 'package:givva_events/presentation/widgets/pagination_controls.dart';
 
+/// The main screen displaying fundraiser events in a tabbed view.
 class EventsScreen extends StatefulWidget {
+  /// Creates an [EventsScreen].
   const EventsScreen({super.key});
 
   @override
@@ -12,8 +14,8 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
-  final List<String> tabs = ['community', 'subgroup', 'archived'];
-  final Map<String, String> tabLabels = {
+  final List<String> tabs = const ['community', 'subgroup', 'archived'];
+  final Map<String, String> tabLabels = const {
     'community': 'Community Events',
     'subgroup': 'Subgroup Events',
     'archived': 'Archived Events',
@@ -22,11 +24,8 @@ class _EventsScreenState extends State<EventsScreen> {
   @override
   void initState() {
     super.initState();
-    // Initial fetch for all tabs or just the first one?
-    // Requirement says "restore that tab's last pagination state".
-    // Let's fetch the first page for all tabs to ensure data is ready.
-    for (var tab in tabs) {
-      context.read<FundraiserBloc>().add(FetchFundraisers(tab: tab, page: 0));
+    for (final tab in tabs) {
+      context.read<FundraiserBloc>().add(FetchFundraisers(tab: tab));
     }
   }
 
@@ -53,7 +52,11 @@ class _EventsScreenState extends State<EventsScreen> {
             ),
             title: const Text(
               'Fund Collection Events',
-              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
             ),
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(50),
@@ -66,29 +69,38 @@ class _EventsScreenState extends State<EventsScreen> {
                   unselectedLabelColor: Colors.grey[600],
                   labelPadding: const EdgeInsets.symmetric(horizontal: 4),
                   indicator: BoxDecoration(
-                    color: Colors.white.withOpacity(0.5),
+                    color: Colors.white.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.orange.withOpacity(0.3)),
-                  ),
-                  tabs: tabs.map((tab) => Tab(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        tabLabels[tab]!,
-                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
+                    border: Border.all(
+                      color: Colors.orange.withValues(alpha: 0.3),
                     ),
-                  )).toList(),
+                  ),
+                  tabs: tabs
+                      .map(
+                        (tab) => Tab(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              tabLabels[tab]!,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
                 ),
               ),
             ),
           ),
           body: TabBarView(
-            children: tabs.map((tab) => _buildTabContent(tab)).toList(),
+            children: tabs.map(_buildTabContent).toList(),
           ),
         ),
       ),
@@ -112,13 +124,19 @@ class _EventsScreenState extends State<EventsScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Error: $error', style: const TextStyle(color: Colors.red)),
+                Text(
+                  'Error: $error',
+                  style: const TextStyle(color: Colors.red),
+                ),
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: () {
                     context.read<FundraiserBloc>().add(
-                          FetchFundraisers(tab: tab, page: pagination?.page ?? 0),
-                        );
+                      FetchFundraisers(
+                        tab: tab,
+                        page: pagination?.page ?? 0,
+                      ),
+                    );
                   },
                   child: const Text('Retry'),
                 ),
@@ -135,7 +153,9 @@ class _EventsScreenState extends State<EventsScreen> {
               Expanded(
                 child: RefreshIndicator(
                   onRefresh: () async {
-                    context.read<FundraiserBloc>().add(FetchFundraisers(tab: tab, page: 0));
+                    context.read<FundraiserBloc>().add(
+                      FetchFundraisers(tab: tab),
+                    );
                   },
                   child: Stack(
                     children: [
@@ -168,7 +188,6 @@ class _EventsScreenState extends State<EventsScreen> {
                 ),
             ],
           ),
-        );
         );
       },
     );

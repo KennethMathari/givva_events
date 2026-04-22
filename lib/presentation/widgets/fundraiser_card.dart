@@ -1,11 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:givva_events/data/models/fundraiser.dart';
 import 'package:givva_events/presentation/widgets/status_chip.dart';
 
+/// A card widget that displays information about a fundraiser event.
 class FundraiserCard extends StatelessWidget {
-  final Fundraiser fundraiser;
-
+  /// Creates a [FundraiserCard].
   const FundraiserCard({super.key, required this.fundraiser});
+
+  /// The fundraiser data to display.
+  final Fundraiser fundraiser;
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +17,32 @@ class FundraiserCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.7),
+        color: Colors.white.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withOpacity(0.2)),
+        border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              fundraiser.images,
+            child: CachedNetworkImage(
+              imageUrl: fundraiser.images,
               width: 60,
               height: 60,
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => Container(
+              placeholder: (context, url) => Container(
+                width: 60,
+                height: 60,
+                color: Colors.grey[200],
+                child: const Center(
+                  child: SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  ),
+                ),
+              ),
+              errorWidget: (context, url, error) => Container(
                 width: 60,
                 height: 60,
                 color: Colors.grey[200],

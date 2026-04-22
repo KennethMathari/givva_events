@@ -3,29 +3,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:givva_events/data/models/fundraiser.dart';
 import 'package:givva_events/data/repositories/fundraiser_repository.dart';
 
-// EVENTS
+/// Base class for all fundraiser events.
 abstract class FundraiserEvent extends Equatable {
   @override
   List<Object?> get props => [];
 }
 
+/// Event to fetch fundraisers for a specific tab and page.
 class FetchFundraisers extends FundraiserEvent {
-  final String tab;
-  final int page;
-
+  /// Creates a [FetchFundraisers] event.
   FetchFundraisers({required this.tab, this.page = 0});
+
+  /// The tab to fetch fundraisers for.
+  final String tab;
+  /// The page number to fetch.
+  final int page;
 
   @override
   List<Object?> get props => [tab, page];
 }
 
-// STATE
+/// State of the fundraiser feature.
 class FundraiserState extends Equatable {
-  final Map<String, List<Fundraiser>> data;
-  final Map<String, Pagination?> pagination;
-  final Map<String, bool> isLoading;
-  final Map<String, String?> errors;
-
+  /// Creates a [FundraiserState].
   const FundraiserState({
     required this.data,
     required this.pagination,
@@ -33,6 +33,7 @@ class FundraiserState extends Equatable {
     required this.errors,
   });
 
+  /// Initial state for the fundraiser feature.
   factory FundraiserState.initial() {
     return const FundraiserState(
       data: {'community': [], 'subgroup': [], 'archived': []},
@@ -42,6 +43,16 @@ class FundraiserState extends Equatable {
     );
   }
 
+  /// Data for each tab.
+  final Map<String, List<Fundraiser>> data;
+  /// Pagination info for each tab.
+  final Map<String, Pagination?> pagination;
+  /// Loading status for each tab.
+  final Map<String, bool> isLoading;
+  /// Errors for each tab.
+  final Map<String, String?> errors;
+
+  /// Creates a copy of this state with the given fields replaced.
   FundraiserState copyWith({
     Map<String, List<Fundraiser>>? data,
     Map<String, Pagination?>? pagination,
@@ -60,13 +71,15 @@ class FundraiserState extends Equatable {
   List<Object?> get props => [data, pagination, isLoading, errors];
 }
 
-// BLOC
+/// BLoC for managing fundraiser data.
 class FundraiserBloc extends Bloc<FundraiserEvent, FundraiserState> {
-  final FundraiserRepository repository;
-
+  /// Creates a [FundraiserBloc].
   FundraiserBloc({required this.repository}) : super(FundraiserState.initial()) {
     on<FetchFundraisers>(_onFetchFundraisers);
   }
+
+  /// The repository used to fetch fundraiser data.
+  final FundraiserRepository repository;
 
   Future<void> _onFetchFundraisers(
     FetchFundraisers event,
@@ -83,8 +96,9 @@ class FundraiserBloc extends Bloc<FundraiserEvent, FundraiserState> {
       final response = await repository.fetchFundraisers(tab: tab, page: event.page);
       
       if (response['status'] == 200) {
-        final List<Fundraiser> newData = response['result']['data'];
-        final Pagination newPaging = response['result']['pagination'];
+        final result = response['result'] as Map<String, dynamic>;
+        final newData = result['data'] as List<Fundraiser>;
+        final newPaging = result['pagination'] as Pagination;
 
         final updatedData = Map<String, List<Fundraiser>>.from(state.data)..[tab] = newData;
         final updatedPagination = Map<String, Pagination?>.from(state.pagination)..[tab] = newPaging;
