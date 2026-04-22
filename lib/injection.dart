@@ -12,7 +12,6 @@ void setupLocator() {
     ..registerLazySingleton<FundraiserRepository>(
       FundraiserRepository.new,
     )
-
     // Blocs
     // We register it as a factory because we usually want a fresh instance per screen,
     // but in this specific app, we might share it.

@@ -1,4 +1,3 @@
-
 /// Mock data for Community — Page 1
 const List<Map<String, dynamic>> mockCommunityPage1 = [
   {
