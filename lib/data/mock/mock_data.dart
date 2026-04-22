@@ -1,4 +1,5 @@
-// COMMUNITY — PAGE 1
+
+/// Mock data for Community — Page 1
 const List<Map<String, dynamic>> mockCommunityPage1 = [
   {
     'id': '9f8eca76-e9eb-44e5-a371-b1a93152f335',
@@ -85,6 +86,7 @@ const List<Map<String, dynamic>> mockCommunityPage1 = [
   },
 ];
 
+/// Mock pagination for Community — Page 1
 const Map<String, dynamic> mockCommunityPaginationPage1 = {
   'page': 0,
   'size': 5,
@@ -94,7 +96,7 @@ const Map<String, dynamic> mockCommunityPaginationPage1 = {
   'hasPrevious': false,
 };
 
-// COMMUNITY — PAGE 2
+/// Mock data for Community — Page 2
 const List<Map<String, dynamic>> mockCommunityPage2 = [
   {
     'id': 'b1c2d3e4-0001-0001-0001-000000000003',
@@ -147,6 +149,7 @@ const List<Map<String, dynamic>> mockCommunityPage2 = [
   },
 ];
 
+/// Mock pagination for Community — Page 2
 const Map<String, dynamic> mockCommunityPaginationPage2 = {
   'page': 1,
   'size': 5,
@@ -156,7 +159,7 @@ const Map<String, dynamic> mockCommunityPaginationPage2 = {
   'hasPrevious': true,
 };
 
-// SUBGROUP — PAGE 1
+/// Mock data for Subgroup — Page 1
 const List<Map<String, dynamic>> mockSubgroupPage1 = [
   {
     'id': '52babe9d-8ec2-4376-aaac-63f445122e2d',
@@ -240,6 +243,7 @@ const List<Map<String, dynamic>> mockSubgroupPage1 = [
   },
 ];
 
+/// Mock pagination for Subgroup — Page 1
 const Map<String, dynamic> mockSubgroupPaginationPage1 = {
   'page': 0,
   'size': 5,
@@ -249,7 +253,7 @@ const Map<String, dynamic> mockSubgroupPaginationPage1 = {
   'hasPrevious': false,
 };
 
-// SUBGROUP — PAGE 2
+/// Mock data for Subgroup — Page 2
 const List<Map<String, dynamic>> mockSubgroupPage2 = [
   {
     'id': 'b2c3d4e5-0002-0002-0002-000000000005',
@@ -269,6 +273,7 @@ const List<Map<String, dynamic>> mockSubgroupPage2 = [
   },
 ];
 
+/// Mock pagination for Subgroup — Page 2
 const Map<String, dynamic> mockSubgroupPaginationPage2 = {
   'page': 1,
   'size': 5,
@@ -278,7 +283,7 @@ const Map<String, dynamic> mockSubgroupPaginationPage2 = {
   'hasPrevious': true,
 };
 
-// ARCHIVED — PAGE 1
+/// Mock data for Archived — Page 1
 const List<Map<String, dynamic>> mockArchivedPage1 = [
   {
     'id': 'c3d4e5f6-0003-0003-0003-000000000001',
@@ -362,6 +367,7 @@ const List<Map<String, dynamic>> mockArchivedPage1 = [
   },
 ];
 
+/// Mock pagination for Archived — Page 1
 const Map<String, dynamic> mockArchivedPaginationPage1 = {
   'page': 0,
   'size': 5,
@@ -371,7 +377,7 @@ const Map<String, dynamic> mockArchivedPaginationPage1 = {
   'hasPrevious': false,
 };
 
-// ARCHIVED — PAGE 2
+/// Mock data for Archived — Page 2
 const List<Map<String, dynamic>> mockArchivedPage2 = [
   {
     'id': 'c3d4e5f6-0003-0003-0003-000000000006',
@@ -407,6 +413,7 @@ const List<Map<String, dynamic>> mockArchivedPage2 = [
   },
 ];
 
+/// Mock pagination for Archived — Page 2
 const Map<String, dynamic> mockArchivedPaginationPage2 = {
   'page': 1,
   'size': 5,

@@ -16,8 +16,8 @@ void main() {
     bloc = FundraiserBloc(repository: repository);
   });
 
-  tearDown(() {
-    bloc.close();
+  tearDown(() async {
+    await bloc.close();
   });
 
   group('FundraiserBloc', () {
@@ -34,7 +34,7 @@ void main() {
       keyword: 'TEST',
     );
 
-    final mockPagination = const Pagination(
+    const mockPagination = Pagination(
       page: 0,
       size: 5,
       totalCount: 1,
@@ -46,20 +46,19 @@ void main() {
     blocTest<FundraiserBloc, FundraiserState>(
       'emits [loading, success] when FetchFundraisers is added',
       build: () {
-        when(
-          () => repository.fetchFundraisers(tab: 'community', page: 0),
-        ).thenAnswer(
-          (_) async => {
-            'status': 200,
-            'result': {
-              'data': [mockFundraiser],
-              'pagination': mockPagination,
-            },
-          },
-        );
+        when(() => repository.fetchFundraisers(tab: 'community', page: 0))
+            .thenAnswer(
+              (_) async => {
+                'status': 200,
+                'result': {
+                  'data': [mockFundraiser],
+                  'pagination': mockPagination,
+                },
+              },
+            );
         return bloc;
       },
-      act: (bloc) => bloc.add(FetchFundraisers(tab: 'community', page: 0)),
+      act: (bloc) => bloc.add(FetchFundraisers(tab: 'community')),
       expect: () => [
         // Loading state
         isA<FundraiserState>().having(
@@ -82,12 +81,11 @@ void main() {
     blocTest<FundraiserBloc, FundraiserState>(
       'emits [loading, error] when repository throws exception',
       build: () {
-        when(
-          () => repository.fetchFundraisers(tab: 'community', page: 0),
-        ).thenThrow(Exception('Failed to fetch'));
+        when(() => repository.fetchFundraisers(tab: 'community', page: 0))
+            .thenThrow(Exception('Failed to fetch'));
         return bloc;
       },
-      act: (bloc) => bloc.add(FetchFundraisers(tab: 'community', page: 0)),
+      act: (bloc) => bloc.add(FetchFundraisers(tab: 'community')),
       expect: () => [
         isA<FundraiserState>().having(
           (s) => s.isLoading['community'],

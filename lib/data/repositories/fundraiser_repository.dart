@@ -10,7 +10,7 @@ class FundraiserRepository {
     required int page, // 0-based
   }) async {
     // Simulate network delay
-    await Future.delayed(const Duration(milliseconds: 800));
+    await Future<void>.delayed(const Duration(milliseconds: 800));
 
     final data = {
       'community': [mockCommunityPage1, mockCommunityPage2],
@@ -19,7 +19,10 @@ class FundraiserRepository {
     };
 
     final pagination = {
-      'community': [mockCommunityPaginationPage1, mockCommunityPaginationPage2],
+      'community': [
+        mockCommunityPaginationPage1,
+        mockCommunityPaginationPage2,
+      ],
       'subgroup': [mockSubgroupPaginationPage1, mockSubgroupPaginationPage2],
       'archived': [mockArchivedPaginationPage1, mockArchivedPaginationPage2],
     };
@@ -44,14 +47,9 @@ class FundraiserRepository {
       };
     }
 
-    final List<Fundraiser> fundraisers =
-        (data[tab]![page] as List<Map<String, dynamic>>)
-            .map((json) => Fundraiser.fromJson(json))
-            .toList();
+    final fundraisers = data[tab]![page].map(Fundraiser.fromJson).toList();
 
-    final Pagination paging = Pagination.fromJson(
-      pagination[tab]![page] as Map<String, dynamic>,
-    );
+    final paging = Pagination.fromJson(pagination[tab]![page]);
 
     return {
       'status': 200,

@@ -126,7 +126,7 @@ class FundraiserBloc extends Bloc<FundraiserEvent, FundraiserState> {
       } else {
         throw Exception(response['message'] ?? 'Failed to fetch fundraisers');
       }
-    } catch (e) {
+    } on Object catch (e) {
       final updatedLoading = Map<String, bool>.from(state.isLoading)
         ..[tab] = false;
       final updatedErrors = Map<String, String?>.from(state.errors)

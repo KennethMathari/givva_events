@@ -6,7 +6,7 @@ import 'package:givva_events/presentation/widgets/status_chip.dart';
 /// A card widget that displays information about a fundraiser event.
 class FundraiserCard extends StatelessWidget {
   /// Creates a [FundraiserCard].
-  const FundraiserCard({super.key, required this.fundraiser});
+  const FundraiserCard({required this.fundraiser, super.key});
 
   /// The fundraiser data to display.
   final Fundraiser fundraiser;

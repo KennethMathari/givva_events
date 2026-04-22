@@ -146,8 +146,6 @@ class _EventsScreenState extends State<EventsScreen> {
         }
 
         return SafeArea(
-          bottom: true,
-          top: false,
           child: Column(
             children: [
               Expanded(
